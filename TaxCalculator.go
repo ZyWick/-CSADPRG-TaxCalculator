@@ -1,3 +1,9 @@
+// ********************
+// Last names: CABRERA, CORPUZ, GAMBOA, URETA
+// Language: Go
+// Paradigm(s): procedural programming
+// ********************
+
 package main
 
 import (
@@ -25,6 +31,7 @@ func calcPagIbIG(monthlyIncome float64, ch chan float64) {
 func calcSSS(monthlyIncome float64, ch chan float64) {
 	IncomeRange := 0
 	switch {
+	case monthlyIncome < 1000:
 	case monthlyIncome < 3250:
 		IncomeRange = 6
 	case monthlyIncome > 24750:
@@ -53,7 +60,7 @@ func calcIncomeTax(TaxableIncome float64) float64 {
 	default:
 		result = 200833.33 + .35*(TaxableIncome-666667)
 	}
-	// excess is 15, 20, 25, 30, 35  for 2023
+	// 2023 is 15, 20, 25, 30, 35  for 2023
 	return result
 }
 
@@ -64,7 +71,6 @@ func main() {
 	fmt.Print("\n\nEnter Monthly Income: ")
 
 	var monthlyIncome float64
-	//TODO: Add user input error handling regard minimum wage
 	fmt.Scanln(&monthlyIncome)
 
 	SSSch := make(chan float64)
